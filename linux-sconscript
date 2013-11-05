@@ -1,0 +1,24 @@
+Import('mode')
+
+t = 'Serverd' if mode == 'Debug' else 'Server'
+
+env = Environment()
+
+f = env.Program
+
+options = '-std=c++0x'
+defines = '' #-DXXX
+includes = '-I/usr/include/python2.7'
+libs = ['python2.7', 'boost_python']
+libpath = ['/usr/lib/python2.7']
+
+d = env.ParseFlags(' '.join((options, defines, includes)))
+env.MergeFlags(d)
+
+sources = ['main.cpp', 'PlayerBase.cpp']
+
+target = f(
+    t,
+    sources,
+    LIBS=libs,
+    LIBPATH=libpath)

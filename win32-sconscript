@@ -1,0 +1,21 @@
+import os
+
+Import('mode')
+
+t = 'Serverd' if mode == 'Debug' else 'Server'
+
+env = Environment(ENV = {'PATH' : os.environ['PATH']})
+env.Append(ENV = {'INCLUDE' : os.environ['INCLUDE']})
+env.Append(ENV = {'LIB' : os.environ['LIB']})
+env.Append(ENV = {'LIBPATH' : os.environ['LIBPATH']})
+
+env.Append(LINKFLAGS='/DEBUG')
+env.Append(CPPPATH="E:/boost;python2.7".split(';'))
+env.Append(CPPFLAGS='/EHsc /GS /W3 /Zi /MDd')
+env.Append(CPPDEFINES = ['BOOST_PYTHON_STATIC_LIB', 'WIN32', '_DEBUG', '_CONSOLE'])
+
+f = env.Program
+
+sources = ['main.cpp', 'PlayerBase.cpp']
+
+target = f(t, sources)
