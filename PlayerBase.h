@@ -2,7 +2,7 @@
 #define GAME_PLAYERBASE_H_
 
 #include "PyProxy.h"
-
+#include <stdint.h>
 
 
 class CPlayerBase : public PyProxy
@@ -12,11 +12,11 @@ public:
     ~CPlayerBase(void){}
 
     /*名称*/
-    int getID(void);
-    void setID(int id);
+    uint32_t getID(void);
+    void setID(uint32_t id);
 
 private:
-    int id_;
+    uint32_t id_;
 };
 
 #endif//GAME_PLAYERBASE_H_

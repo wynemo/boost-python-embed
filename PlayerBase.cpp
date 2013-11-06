@@ -16,11 +16,11 @@ CPlayerBase::CPlayerBase(void)
     }
 }
 
-int CPlayerBase::getID(void)
+uint32_t CPlayerBase::getID(void)
 {
     return id_;
 }
-void CPlayerBase::setID(int id)
+void CPlayerBase::setID(uint32_t id)
 {
     id_ = id;
 }
