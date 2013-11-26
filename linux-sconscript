@@ -15,7 +15,7 @@ libpath = ['/usr/lib/python2.7']
 d = env.ParseFlags(' '.join((options, defines, includes)))
 env.MergeFlags(d)
 
-sources = ['main.cpp', 'PlayerBase.cpp']
+sources = ['main.cpp', 'PlayerBase.cpp', 'PyProxy.cpp']
 
 target = f(
     t,
