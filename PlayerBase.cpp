@@ -1,19 +1,11 @@
 ﻿#include "PlayerBase.h"
 
+#include <boost/python.hpp>
 using namespace boost;
+using namespace boost::python;
 
 CPlayerBase::CPlayerBase(void)
 {
-    try
-    {
-        createPyObject("foo", "PlayerProxy");
-        auto ptr1 = boost::python::ptr(this);
-        call_method<void>(mObject.ptr(), "set_base", ptr1);
-    }
-    catch (python::error_already_set const &)
-    {
-        PyErr_Print();
-    }
 }
 
 uint32_t CPlayerBase::getID(void)
@@ -27,7 +19,9 @@ void CPlayerBase::setID(uint32_t id)
 
 BOOST_PYTHON_MODULE(MPlayer)
 {
-    class_<CPlayerBase, noncopyable>("CPlayerBase", no_init)
+    class_<PyBase, noncopyable>("PyBase", no_init)
+    ;
+    class_<CPlayerBase, bases<PyBase>, noncopyable>("PlayerBase", no_init)
         .def("getID", &CPlayerBase::getID)
         .def("setID", &CPlayerBase::setID)
     ;

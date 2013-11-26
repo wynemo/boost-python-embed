@@ -5,7 +5,7 @@
 #include <stdint.h>
 
 
-class CPlayerBase : public PyProxy
+class CPlayerBase : public PyBase
 {
 public:
     CPlayerBase(void);

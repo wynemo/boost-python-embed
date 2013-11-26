@@ -1,6 +1,11 @@
 ﻿#include <iostream>
 #include "PlayerBase.h"
 
+#include <boost/python.hpp>
+
+using namespace boost;
+using namespace boost::python;
+
 extern "C" void initModules(void);
 
 bool startup()
@@ -39,7 +44,7 @@ int main()
     try
     {
         object bar = import("bar");
-        call_method<void>(bar.ptr(), "ttt", ppp.getPyObject());
+        call_method<void>(bar.ptr(), "ttt", ptr(&ppp));
         object a = object(handle<>(borrowed(PyEval_GetBuiltins())));
         object b = a["unicode"];
 #ifdef WIN32        

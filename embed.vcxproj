@@ -17,6 +17,7 @@
   <ItemGroup>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="PlayerBase.cpp" />
+    <ClCompile Include="PyProxy.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{4352D841-0FE7-4061-AEFA-AD4D4ECE4316}</ProjectGuid>
